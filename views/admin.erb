@@ -1,0 +1,24 @@
+<h3>Hello administrator</h3>
+<h4>Here is a list of doctors at this clinic:</h4>
+
+<% if @doctors.==(nil) %>
+  <p class="lead">There are no doctors at this time</p>
+<% else %>
+  <ul>
+    <% @doctors.each() do |doctor| %>
+      <li>
+        <a href="/doctor/<%= doctor.id() %>"><%= doctor.name() %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/admin" method="post">
+  <div class="form-group">
+    <label for="name"> Enter a doctor's name to add to the list</label>
+    <input id="name" name="name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-success">Add</button>
+</form>
+<br>
+<a href="/" class="btn btn-default" role="button">Home</a>

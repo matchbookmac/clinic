@@ -1,0 +1,16 @@
+<h4>Here is a list of this doctor's patients at this clinic:</h4>
+
+<% if @patients.==(nil) %>
+  <p class="lead">There are no patients at this time</p>
+<% else %>
+  <ul>
+    <% @patients.each() do |patient| %>
+      <li>
+        <a href="/patient/<%= patient.id() %>"><%= patient.name() %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<a href="/" class="btn btn-default" role="button">Home</a>
