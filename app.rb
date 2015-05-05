@@ -5,7 +5,7 @@ require('./lib/doctor')
 require('./lib/patient')
 also_reload('lib/**/*.rb')
 
-DB = PG.connect({:dbname => 'clinic'})
+#DB = PG.connect({:dbname => 'clinic'})
 
 get('/') do
   erb(:index)

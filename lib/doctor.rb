@@ -41,20 +41,20 @@ class Doctor
     DB.exec("UPDATE patients SET doctor_id = @id WHERE id = #{@patient_id}")
   end
 
-  define_method(:patients) do
-    @patients = []
-    @id = id()
-    results = DB.exec("SELECT * FROM patients WHERE id = #{@id};")
-    results.each() do |result|
-      @id = result.fetch('id').to_i()
-      @name = result.fetch('name')
-      @doctor_id = result.fetch('doctor_id').to_i()
-      @birthday = result.fetch('birthday')
-      patient = Patient.new({:id => @id, :name => @name, :doctor_id => @doctor_id, :birthday => @bithday})
-      patients.push(patient)
-    end
-    patients
-  end
+  # define_method(:patients) do
+  #   @patients = []
+  #   @id = id()
+  #   results = DB.exec("SELECT * FROM patients WHERE doctor_id = #{@id};")
+  #   results.each() do |result|
+  #     @id = result.fetch('id').to_i()
+  #     @name = result.fetch('name')
+  #     @doctor_id = result.fetch('doctor_id').to_i()
+  #     @birthday = result.fetch('birthday')
+  #     patient = Patient.new({:id => @id, :name => @name, :doctor_id => @doctor_id, :birthday => @bithday})
+  #     patients.push(patient)
+  #   end
+  #   patients
+  # end
 
   define_method(:==) do |other_doctor|
     name().==(other_doctor.name()).&(id().==(other_doctor.id()))
